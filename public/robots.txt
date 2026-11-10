@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Prelaunch development site. Switch to allow on release.
