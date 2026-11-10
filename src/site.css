@@ -71,3 +71,148 @@
   .catalog-aside>p:last-child{font-size:11px}
   .navigation.expanded{max-height:calc(100dvh - 76px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 }
+
+/* Mobile artwork composition: keep copy visually connected to photography */
+@media (max-width: 840px) and (min-width: 561px) {
+  .home-hero .hero-image { background-position: 66% 42%; }
+  .full-bleed-quote .visual-photo { background-position: 67% 48%; }
+  .creator-hero > .visual-photo { background-position: 67% center; }
+}
+@media (max-width: 560px) {
+  /*
+   * Keep the existing wide hero artwork visible at its intended proportion.
+   * A single continuous, graduated surface carries the imagery into the copy:
+   * no separated image strip and no inaccessible headline over faces.
+   */
+  .home-hero {
+    display: block;
+    position: relative;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-top: clamp(178px, 55vw, 245px);
+    background: #30152e;
+    overflow: hidden;
+  }
+  .home-hero .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: auto;
+    background-size: 122% auto;
+    background-position: 74% top;
+    background-repeat: no-repeat;
+  }
+  .home-hero .hero-vignette {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    max-height: none;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(37, 12, 32, .04) 0,
+      rgba(39, 13, 34, .10) 17vw,
+      rgba(43, 17, 39, .58) 39vw,
+      #30152e 72vw,
+      #30152e 100%
+    );
+  }
+  .home-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    display: block;
+    height: auto;
+    flex: none;
+  }
+  .home-hero .hero-text {
+    max-width: none;
+    padding: 0 0 42px;
+  }
+  .home-hero .hero-overline { margin-bottom: 13px; }
+  .home-hero h1 {
+    font-size: clamp(43px, 11vw, 61px);
+    line-height: 1.065;
+    letter-spacing: -1.2px;
+    max-width: 520px;
+    text-wrap: balance;
+  }
+  .home-hero .hero-text > p {
+    max-width: 440px;
+    font-size: 13.5px;
+    line-height: 1.72;
+    margin: 18px 0 22px;
+  }
+  .home-hero .hero-cta { gap: 13px 18px; }
+  .home-hero .hero-small-note { margin-top: 24px; }
+
+  /* Portrait artwork uses a stable natural ratio rather than a fixed crop. */
+  .mood-layout .mood-photo,
+  .safety-grid > .visual-photo,
+  .creator-feature > .visual-photo {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: 520px;
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center 27%;
+  }
+  /* Wide editorial images should not be forced into tall square crops. */
+  .editorial-split > .visual-photo,
+  .about-hero > .visual-photo {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: 410px;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: 58% center;
+  }
+
+  /* Full-bleed sections: foreground copy stays readable on short phones. */
+  .full-bleed-quote {
+    min-height: 435px;
+    align-items: flex-end;
+  }
+  .full-bleed-quote .visual-photo {
+    background-position: 67% 42%;
+  }
+  .full-bleed-quote .quote-shade {
+    background: linear-gradient(0deg, #291026fa 0%, #291026ed 35%, #2910269c 69%, #29102618 100%);
+  }
+  .full-bleed-quote .quote-text {
+    padding-top: 120px;
+    padding-bottom: 38px;
+  }
+  .full-bleed-quote .quote-text h2 {
+    font-size: clamp(35px, 10.5vw, 45px);
+    max-width: 370px;
+    line-height: 1.1;
+  }
+
+  .creator-hero {
+    min-height: 520px;
+    align-items: flex-end;
+  }
+  .creator-hero > .visual-photo {
+    background-position: 67% 36%;
+  }
+  .creator-hero .creator-shade {
+    background: linear-gradient(0deg, #2b122cfb 0%, #34142ce8 37%, #36142c89 72%, #36142c16 100%);
+  }
+  .creator-head {
+    padding-top: 140px;
+    padding-bottom: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .home-hero { padding-top: 51vw; }
+  .home-hero h1 { font-size: clamp(40px, 11.7vw, 43px); }
+  .home-hero .hero-cta { gap: 12px; }
+  .home-hero .button-rose { padding-inline: 13px; }
+  .home-hero .underlined-link { font-size: 11px; }
+}
