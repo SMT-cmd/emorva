@@ -26,6 +26,9 @@ function Home(){
    <div><p className="micro-label">CHOOSE YOUR OWN BEGINNING</p><h2 id="home-actions-heading">The next step is <em>yours.</em></h2></div>
    <p>One simple place to begin. Go straight to what interests you—no endless scrolling.</p>
   </div>
+  <nav className="home-category-links" aria-label="All connection categories">
+   {GROUPS.map(g=><a key={g.id} href={`/discover?group=${g.id}`} className="home-category-link"><span>{g.label}</span><span aria-hidden>↗</span></a>)}
+  </nav>
   <div className="home-actions-grid">
    {pathways.map(p=><a className="home-action-card" href={p.href} key={p.href} aria-label={p.name}>
     <span className="home-action-number">{p.number}</span>
@@ -37,7 +40,68 @@ function Home(){
  </section></>;
 }
 const groupIcons:Record<GroupId,string>={social:"01",dating:"02",adult:"03",activities:"04",creators:"05"};
-function Discover(){const from=new URLSearchParams(location.search).get("group");const valid=GROUPS.some(x=>x.id===from);const [group,setGroup]=useState<GroupId>(valid?from as GroupId:"dating");const [selected,setSelected]=useState<string|null>(null);const active=GROUPS.find(x=>x.id===group)!;const items=INTENTS.filter(i=>i.group===group);const intent=INTENTS.find(i=>i.id===selected);return <><PageIntro eyebrow="FIND YOUR KIND OF CHEMISTRY" title={<>Every connection has <em>its own story.</em></>} desc="Start with what you're open to. No endless scrolling, no need to explain yourself twice."/><section className="shell discover-layout"><aside className="catalog-aside"><p className="micro-label">CHOOSE A PATH</p><div role="tablist" aria-label="Connection types">{GROUPS.map(g=><button key={g.id} role="tab" aria-selected={group===g.id} className={group===g.id?"active":""} onClick={()=>{setGroup(g.id);setSelected(null)}}><span>{groupIcons[g.id]}</span>{g.label}<i aria-hidden>↗</i></button>)}</div><p className="swipe-hint">Swipe to browse all five categories →</p><p>All prices are proposed introduction fees. No transactions are enabled during development.</p></aside><div className="catalog-main"><div className="catalog-heading"><p className="micro-label">EXPLORE / {active.label.toUpperCase()}</p><h2>{active.label}</h2><p>Select what feels right. We'll always show the proposed fee before any introduction.</p></div><div className="intent-list">{items.map(i=><button key={i.id} className={selected===i.id?"intent-row selected":"intent-row"} onClick={()=>setSelected(selected===i.id?null:i.id)}><span className="intent-title"><b>{i.label}</b><small>{i.description}</small></span><span className="intent-price">{price(i.feeNgn)} <span aria-hidden>↗</span></span></button>)}</div>{intent&&<div className="intent-explainer"><button aria-label="Close service details" onClick={()=>setSelected(null)}>×</button><p className="micro-label">YOUR SELECTED INTENTION</p><h3>{intent.label}</h3><p>{intent.description} Emorva's introduction service requires mutual interest and approval before private contacts are exchanged. It does not guarantee a date, meeting, or intimacy.</p><div><strong>{price(intent.feeNgn)}</strong><span>Proposed introduction fee</span></div><a className="button button-rose" href="/early-access">Get launch updates <Chevron/></a></div>}</div></section><section className="shell section-end-note"><p><strong>Good to know.</strong> You can change preferences and explore different intentions. Each member chooses which introductions and approved contact methods they allow. Payment doesn't purchase anyone's consent.</p></section><EarlyAccessNudge/></>}
+function Discover(){
+ const from=new URLSearchParams(window.location.search).get("group");
+ const valid=GROUPS.some(x=>x.id===from);
+ const [group,setGroup]=useState<GroupId>(valid?from as GroupId:"dating");
+ const [selected,setSelected]=useState<string|null>(null);
+ useEffect(()=>{
+   const syncGroup=()=>{
+     const value=new URLSearchParams(window.location.search).get("group");
+     setGroup(GROUPS.some(g=>g.id===value)?value as GroupId:"dating");
+     setSelected(null);
+   };
+   window.addEventListener("popstate",syncGroup);
+   return ()=>window.removeEventListener("popstate",syncGroup);
+ },[]);
+ const active=GROUPS.find(x=>x.id===group)!;
+ const items=INTENTS.filter(i=>i.group===group);
+ const intent=INTENTS.find(i=>i.id===selected);
+ function selectGroup(id:GroupId){
+   setGroup(id);
+   setSelected(null);
+   window.history.pushState({group:id},"",`/discover?group=${id}`);
+ }
+ return <>
+  <PageIntro eyebrow="FIND YOUR KIND OF CHEMISTRY" title={<>Every connection has <em>its own story.</em></>} desc="Explore all five connection categories below. Choose the kind of introduction that feels right for you."/>
+  <section className="shell discover-layout">
+   <aside className="catalog-aside">
+    <p className="micro-label">ALL 5 CATEGORIES</p>
+    <nav className="group-selector" aria-label="Connection categories">
+     {GROUPS.map(g=><a key={g.id} href={`/discover?group=${g.id}`} aria-current={group===g.id?"page":undefined} className={group===g.id?"active":""} onClick={e=>{e.preventDefault();selectGroup(g.id)}}>
+       <span className="group-number">{groupIcons[g.id]}</span>
+       <span className="group-label">{g.label}</span>
+       <span className="group-count">{INTENTS.filter(i=>i.group===g.id).length} options</span>
+     </a>)}
+    </nav>
+    <p className="catalog-aside-note">All five categories are shown above. Fees are proposed and checkout is not live.</p>
+   </aside>
+   <div className="catalog-main" id="category-options">
+    <div className="catalog-heading">
+     <p className="micro-label">EXPLORE / {active.label.toUpperCase()}</p>
+     <h2>{active.label}</h2>
+     <p>{items.length} ways to connect. Choose an option to read more before joining early access.</p>
+    </div>
+    <div className="intent-list">
+     {items.map(i=><button key={i.id} className={selected===i.id?"intent-row selected":"intent-row"} onClick={()=>setSelected(selected===i.id?null:i.id)} aria-expanded={selected===i.id}>
+      <span className="intent-title"><b>{i.label}</b><small>{i.description}</small></span>
+      <span className="intent-price">{price(i.feeNgn)} <span aria-hidden>↗</span></span>
+     </button>)}
+    </div>
+    {intent&&<div className="intent-explainer">
+     <button aria-label="Close service details" onClick={()=>setSelected(null)}>×</button>
+     <p className="micro-label">YOUR SELECTED INTENTION</p>
+     <h3>{intent.label}</h3>
+     <p>{intent.description} Emorva's introduction service requires mutual interest and approval before private contacts are exchanged. It does not guarantee a date, meeting, or intimacy.</p>
+     <div><strong>{price(intent.feeNgn)}</strong><span>Proposed introduction fee</span></div>
+     <a className="button button-rose" href="/early-access">Get launch updates <Chevron/></a>
+    </div>}
+   </div>
+  </section>
+  <section className="shell section-end-note"><p><strong>Good to know.</strong> You can change preferences and explore different intentions. Each member chooses which introductions and approved contact methods they allow. Payment doesn't purchase anyone's consent.</p></section>
+  <EarlyAccessNudge/>
+ </>;
+}
 
 function EarlyAccess(){
  return <>
