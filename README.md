@@ -2,15 +2,15 @@
 
 **Where chemistry begins.**
 
-An original, web-first adults-only matchmaking and future creator ecosystem. The product is currently **in development**. It is not accepting paid introductions, creator purchases or private contact exchanges.
+An original, web-first adults-only matchmaking and future creator ecosystem. The site is available at **https://emorva.pages.dev**, but the matchmaking product is **in development**. It is not accepting paid introductions, creator purchases or private contact exchanges.
 
 ## Application stack
 
 - **Web:** React 19 + TypeScript + Vite, branded in the Velvet Romance identity.
 - **Server:** Cloudflare Workers in TypeScript (\`worker/index.ts\`).
-- **Data:** Cloudflare D1 schema in \`database/schema.sql\`, not yet migrated.
+- **Data:** Cloudflare D1 schema in \`database/schema.sql\` and \`database/0002_member_features.sql\` has been applied to the Emorva D1 database.
 - **Telegram:** Read-only nested category bot menus; actual matchmaking not yet enabled.
-- **Images:** Optimized African adult photographic assets intended for \`public/assets\`. Pending upload.
+- **Images:** African adult photographic assets were generated; final site asset upload remains outstanding.
 - **No Vercel and no GitHub Actions.** One working branch: \`main\`.
 
 ## First local run

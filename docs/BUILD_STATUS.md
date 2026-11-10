@@ -1,30 +1,23 @@
-# Emorva development status
+# Emorva — verified build status
+Last updated: 2026-11-10
 
-As of 2026-11-10.
+## Verified
+- React 19 + TypeScript website deployed through Cloudflare Pages at https://emorva.pages.dev
+- Connected to SMT-cmd/emorva main branch; no GitHub Actions.
+- Fixed TypeScript compilation error; Cloudflare deployment 5421d1f6-808c-4a61-aff6-ec79c1cc374e succeeded for commit 0b841f6.
+- Cloudflare D1 database emorva-db created; schema.sql and 0002_member_features.sql applied successfully.
+- Landing page, nested category/fee catalogue, FAQ, early access API, read-only Telegram bot handler.
+- Member Space /app with signed Telegram initData authentication, editable profile, free monthly search wallet, adult-age-gated search and opted-in discovery, interest requests, and introduction history.
+- Explicit restrictions: sensitive contact exchange and live payment capture not enabled.
 
-| Area | Status |
-|---|---|
-| React + TypeScript website source | Written, not build-verified |
-| Vite + Cloudflare Workers application configuration | Written, not deployed |
-| Velvet Romance styling | Included |
-| Generated Black/African adult website photographs | Generated separately, not yet committed to \`public/assets\` |
-| Interactive nested service catalogue | Implemented in React |
-| Telegram read-only catalogue bot | Handler implemented, needs BotFather setup and live validation |
-| Health and catalogue API | Implemented, not runtime-tested |
-| Early-access email endpoint | Disabled until binding and secrets configured |
-| D1 schema | Drafted, not applied |
-| Live member profiles and Telegram-linked authentication | Not implemented |
-| Adult-age assurance and Dojah integration | Not implemented |
-| Matching engine and consent state machine | Not implemented |
-| Credit ledger / paid introductions / webhook payments | Not implemented |
-| Protected private contact exchange | Not implemented |
-| Creator content and payouts | Not implemented |
-| Moderation and Founder admin dashboard | Not implemented |
-| Cloudflare deployment | Not configured |
-| Legal/privacy/payment-provider approval | Outstanding |
+## Integration blockers
+- No Telegram BotFather token or webhook secret available to the application.
+- No Dojah verified age-assurance callback configured. User self-reported age does not pass adult gate.
+- Payment provider approval, credentials, signature-verified webhook, debit/credit reserve/settlement and refunds are unimplemented.
+- Paid availability, automatic bilateral contact exchange, Telegram Stars and creator payments are not yet live.
+- Founder admin auth, moderation operations, real member media uploads, privacy deletion, and production safety testing remain to implement.
+- Generated African romantic photographs were produced separately but have not been deployed as website assets. The frontend retains its designed burgundy fallback.
+- Cloudflare Workers production build, separate from the Pages deployment, has not been deployed.
 
-## Non-negotiable technical controls
-A website balance is not sufficient proof of payment. No contact exchange or availability-credit settlement before state-machine validation, durable idempotent ledger entries, age assurance and mutual consent. Avoid using third-party media as real member profiles.
-
-## Build rules
-Use one GitHub \`main\` branch; no GitHub Actions; do not modify the \`rea\` fork or other production projects. Do not claim the site is live without checking a deployment.
+## Never misrepresent
+Cloudflare deployment success is not end-to-end matchmaking readiness. Protect real members until verified identity/age, explicit mutual consent, financial reconciliation, safety, and compliance controls are complete.

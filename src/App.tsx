@@ -12,7 +12,7 @@ function Header(){
   <div className={"nav-links"+(open?" open":"")} id="nav-links">{[
    ["#discover","Discover"],["#how","How it works"],["#creators","For creators"],["#safety","Trust & privacy"],["#faq","FAQs"]
   ].map(([href,label])=><a href={href} key={href} onClick={()=>setOpen(false)}>{label}</a>)}</div>
-  <div className="nav-actions"><a className="nav-text" href="#early-access">Early access</a><a className="btn btn-rose btn-small" href="#discover">Find your connection <Chevron/></a>
+  <div className="nav-actions"><a className="nav-text" href="/app">Member space</a><a className="nav-text" href="#early-access">Early access</a><a className="btn btn-rose btn-small" href="#discover">Find your connection <Chevron/></a>
    <button type="button" className="menu-toggle" aria-label={open?"Close menu":"Open menu"} aria-expanded={open} aria-controls="nav-links" onClick={()=>setOpen(x=>!x)}><span/><span/><span/></button>
   </div></nav></header>;
 }
