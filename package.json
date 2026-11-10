@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "test": "node --import tsx --test tests/*.test.ts",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "build:pages": "tsc --noEmit && vite build --config vite.pages.config.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
