@@ -16,19 +16,6 @@
   .join-controls button{min-height:46px}
 }
 @media(max-width:560px){
-  /* Photograph shows its full landscape composition above the copy: no giant cropped face. */
-  .home-hero{height:auto;min-height:0;max-height:none;display:flex;flex-direction:column;background:#30152e}
-  .home-hero .hero-image{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:16/9;min-height:0;max-height:none;background-position:center 52%;background-size:cover;flex:0 0 auto}
-  .home-hero .hero-vignette{top:0;bottom:auto;height:calc(56.25vw + 2px);max-height:none;background:linear-gradient(180deg,transparent 68%,#30152e 100%);pointer-events:none}
-  .home-hero .hero-content{height:auto;display:block;flex:1;align-items:initial}
-  .home-hero .hero-text{padding:12px 0 36px;max-width:none}
-  .hero-overline{font-size:9px;letter-spacing:.16em;margin-bottom:12px}
-  .home-hero h1{font-size:clamp(43px,11vw,61px);line-height:1.06;letter-spacing:-1.2px}
-  .home-hero .hero-text>p{font-size:13.5px;line-height:1.7;margin:16px 0 20px;max-width:450px}
-  .home-hero .hero-cta{gap:17px}
-  .home-hero .button-rose{min-height:46px;padding:13px 18px}
-  .home-hero .underlined-link{font-size:12px;padding-bottom:7px;min-height:30px;display:inline-flex;align-items:center}
-  .home-hero .hero-small-note{margin-top:22px;font-size:10px;line-height:1.5;gap:8px}
   .mood-photo{height:365px;max-width:100%;background-position:center 30%}
   .editorial-split>.visual-photo,.safety-grid>.visual-photo,.about-hero>.visual-photo{height:355px;max-width:100%}
   .creator-feature>.visual-photo{height:365px}
@@ -72,52 +59,57 @@
   .navigation.expanded{max-height:calc(100dvh - 76px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 }
 
-/* Mobile artwork composition: keep copy visually connected to photography */
+/* Mobile image and copy composition, source of truth (desktop unchanged).
+ * Place the headline over the photograph itself, not in a detached text strip.
+ * The extra width preserves BOTH faces on narrow screens.
+ */
 @media (max-width: 840px) and (min-width: 561px) {
   .home-hero .hero-image { background-position: 66% 42%; }
   .full-bleed-quote .visual-photo { background-position: 67% 48%; }
   .creator-hero > .visual-photo { background-position: 67% center; }
 }
 @media (max-width: 560px) {
-  /*
-   * Keep the existing wide hero artwork visible at its intended proportion.
-   * A single continuous, graduated surface carries the imagery into the copy:
-   * no separated image strip and no inaccessible headline over faces.
-   */
   .home-hero {
-    display: block;
     position: relative;
+    display: block;
+    width: 100%;
     height: auto;
     min-height: 0;
     max-height: none;
-    padding-top: clamp(178px, 55vw, 245px);
+    padding: 0;
     background: #30152e;
+    isolation: isolate;
     overflow: hidden;
   }
   .home-hero .hero-image {
     position: absolute;
     inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
     min-height: 0;
     max-height: none;
     aspect-ratio: auto;
-    background-size: 122% auto;
-    background-position: 74% top;
+    background-image: url("/assets/hero.jpg");
+    background-size: 185% auto;
+    background-position: 78% top;
     background-repeat: no-repeat;
+    background-color: #30152e;
   }
   .home-hero .hero-vignette {
     position: absolute;
     inset: 0;
+    width: 100%;
     height: 100%;
     max-height: none;
     pointer-events: none;
     background: linear-gradient(
       180deg,
-      rgba(37, 12, 32, .04) 0,
-      rgba(39, 13, 34, .10) 17vw,
-      rgba(43, 17, 39, .58) 39vw,
-      #30152e 72vw,
+      rgba(41, 13, 36, .02) 0,
+      rgba(41, 13, 36, .08) 115px,
+      rgba(41, 13, 36, .36) 205px,
+      rgba(43, 16, 39, .82) 335px,
+      #30152e 490px,
       #30152e 100%
     );
   }
@@ -125,31 +117,61 @@
     position: relative;
     z-index: 2;
     display: block;
+    width: calc(100% - 36px);
     height: auto;
-    flex: none;
+    margin: 0 auto;
+    padding-top: clamp(185px, 55vw, 238px);
+    padding-bottom: 43px;
   }
   .home-hero .hero-text {
     max-width: none;
-    padding: 0 0 42px;
+    padding: 0;
   }
-  .home-hero .hero-overline { margin-bottom: 13px; }
+  .home-hero .hero-overline {
+    position: relative;
+    margin: 0 0 13px;
+    font-size: 9px;
+    letter-spacing: .17em;
+    text-shadow: 0 1px 9px #230d24bb;
+  }
   .home-hero h1 {
-    font-size: clamp(43px, 11vw, 61px);
-    line-height: 1.065;
-    letter-spacing: -1.2px;
+    position: relative;
     max-width: 520px;
+    margin: 0;
+    font-size: clamp(43px, 11vw, 61px);
+    line-height: 1.05;
+    letter-spacing: -1.25px;
     text-wrap: balance;
+    text-shadow: 0 3px 24px #220b20a6;
   }
   .home-hero .hero-text > p {
     max-width: 440px;
+    margin: 21px 0 24px;
     font-size: 13.5px;
-    line-height: 1.72;
-    margin: 18px 0 22px;
+    line-height: 1.75;
   }
-  .home-hero .hero-cta { gap: 13px 18px; }
-  .home-hero .hero-small-note { margin-top: 24px; }
+  .home-hero .hero-cta {
+    gap: 13px 18px;
+  }
+  .home-hero .button-rose {
+    min-height: 46px;
+    padding: 13px 18px;
+  }
+  .home-hero .underlined-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+  .home-hero .hero-small-note {
+    margin-top: 25px;
+    gap: 8px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
 
-  /* Portrait artwork uses a stable natural ratio rather than a fixed crop. */
+  /* Keep the matching photo sections proportionate on mobile. */
   .mood-layout .mood-photo,
   .safety-grid > .visual-photo,
   .creator-feature > .visual-photo {
@@ -161,7 +183,6 @@
     background-size: cover;
     background-position: center 27%;
   }
-  /* Wide editorial images should not be forced into tall square crops. */
   .editorial-split > .visual-photo,
   .about-hero > .visual-photo {
     width: 100%;
@@ -172,8 +193,6 @@
     background-size: cover;
     background-position: 58% center;
   }
-
-  /* Full-bleed sections: foreground copy stays readable on short phones. */
   .full-bleed-quote {
     min-height: 435px;
     align-items: flex-end;
@@ -193,7 +212,6 @@
     max-width: 370px;
     line-height: 1.1;
   }
-
   .creator-hero {
     min-height: 520px;
     align-items: flex-end;
@@ -210,7 +228,7 @@
   }
 }
 @media (max-width: 360px) {
-  .home-hero { padding-top: 51vw; }
+  .home-hero .hero-content { padding-top: 50vw; }
   .home-hero h1 { font-size: clamp(40px, 11.7vw, 43px); }
   .home-hero .hero-cta { gap: 12px; }
   .home-hero .button-rose { padding-inline: 13px; }
