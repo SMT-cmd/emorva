@@ -312,3 +312,16 @@
  .home-action-card h3{font-size:17px}
  .home-action-card p{font-size:10.5px}
 }
+/* Compact mobile footer for the shorter landing page */
+@media (max-width: 560px) {
+  .editorial-footer .footer-main { padding: 37px 0 33px; gap: 23px; }
+  .editorial-footer .footer-main > div:first-child p { margin: 12px 0 0; max-width: 320px; font-size: 12px; line-height: 1.65; }
+  .editorial-footer .footer-columns { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 11px; }
+  .editorial-footer .footer-columns > div { gap: 10px; }
+  .editorial-footer .footer-columns span { font-size: 10px; margin-bottom: 3px; }
+  .editorial-footer .footer-columns a { font-size: 11px; line-height: 1.6; overflow-wrap: break-word; }
+  .editorial-footer .footer-fine { gap: 6px; padding: 18px 0 25px; }
+}
+@media (max-width: 340px) {
+  .editorial-footer .footer-columns { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 15px; }
+}
