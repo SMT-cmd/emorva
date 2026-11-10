@@ -4,9 +4,9 @@ Last updated: 2026-11-10
 ## Verified
 - React 19 + TypeScript website deployed through Cloudflare Pages at https://emorva.pages.dev
 - Connected to SMT-cmd/emorva main branch; no GitHub Actions.
-- Fixed TypeScript compilation error; Cloudflare deployment 5421d1f6-808c-4a61-aff6-ec79c1cc374e succeeded for commit 0b841f6.
+- Cloudflare production deployment for source commit 1b509b6 succeeded; the multi-page site was visually checked on desktop and mobile.
 - Cloudflare D1 database emorva-db created; schema.sql and 0002_member_features.sql applied successfully.
-- Landing page, nested category/fee catalogue, FAQ, early access API, read-only Telegram bot handler.
+- Editorial multi-page site (Home, Discover, How It Works, Safety, Creators, About, Privacy, Terms), compact nested fees, early-access API and read-only Telegram bot handler.
 - Member Space /app with signed Telegram initData authentication, editable profile, free monthly search wallet, adult-age-gated search and opted-in discovery, interest requests, and introduction history.
 - Explicit restrictions: sensitive contact exchange and live payment capture not enabled.
 
@@ -16,7 +16,7 @@ Last updated: 2026-11-10
 - Payment provider approval, credentials, signature-verified webhook, debit/credit reserve/settlement and refunds are unimplemented.
 - Paid availability, automatic bilateral contact exchange, Telegram Stars and creator payments are not yet live.
 - Founder admin auth, moderation operations, real member media uploads, privacy deletion, and production safety testing remain to implement.
-- Generated African romantic photographs were produced separately but have not been deployed as website assets. The frontend retains its designed burgundy fallback.
+- Four original African romantic photographs and the accepted ribbon logo have been deployed as real website assets, with responsive image placements, favicon and social-preview metadata.
 - Cloudflare Workers production build, separate from the Pages deployment, has not been deployed.
 
 ## Never misrepresent

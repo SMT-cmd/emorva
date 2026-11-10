@@ -46,7 +46,7 @@ export default function MemberSpace(){
  };
  const loadRequests=async()=>{setTab("requests");if(!canMatch)return;try{const r=await fetch("/api/introductions",{headers:authHeaders(init)});const d=await r.json() as {requests?:Intro[]};if(r.ok)setRequests(d.requests||[])}catch{}};
  return <main className="member-app">
-  <header className="member-header"><a className="member-brand" href="/">emorva<span>.</span></a><span>Where chemistry begins.</span></header>
+  <header className="member-header"><a className="member-brand" href="/"><img src="/assets/emorva-mark.png" alt="" width="34" height="34"/>emorva<span>.</span></a><span>Where chemistry begins.</span></header>
   <section className="member-head"><div><p className="member-kicker">YOUR PRIVATE SPACE</p><h1>Connections, on <em>your terms.</em></h1><p>Your profile, preferences and mutual introductions—thoughtfully in one place.</p></div><div className="member-balance"><small>Monthly search credits</small><strong>{init?credit:"—"}</strong><span>Free credits · never cash</span></div></section>
   {!init?<section className="member-panel"><h2>Connect your Telegram account</h2><p>For account security, this space opens inside the official Emorva Telegram Mini App. An ordinary website link does not authenticate you automatically.</p><a className="member-primary" href="/">Return to Emorva</a></section>:
   <><p role="status" className="member-status">{status}</p>

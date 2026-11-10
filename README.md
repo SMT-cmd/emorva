@@ -10,7 +10,7 @@ An original, web-first adults-only matchmaking and future creator ecosystem. The
 - **Server:** Cloudflare Workers in TypeScript (\`worker/index.ts\`).
 - **Data:** Cloudflare D1 schema in \`database/schema.sql\` and \`database/0002_member_features.sql\` has been applied to the Emorva D1 database.
 - **Telegram:** Read-only nested category bot menus; actual matchmaking not yet enabled.
-- **Images:** African adult photographic assets were generated; final site asset upload remains outstanding.
+- **Images:** Four original African adult romantic photographs and the accepted Emorva ribbon mark are committed to `public/assets/`.
 - **No Vercel and no GitHub Actions.** One working branch: \`main\`.
 
 ## First local run
