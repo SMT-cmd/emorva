@@ -80,7 +80,8 @@ async function handleTelegram(env:Env,request:Request){
  }catch{return err(400,"Invalid Telegram request.");}
  if(update.callback_query?.message?.chat?.id){
   const cb=update.callback_query;
-  const id=cb.message.chat.id;
+  const id=cb.message?.chat?.id;
+  if(typeof id!=="number")return json({ok:true});
   await telegram(env,"answerCallbackQuery",{callback_query_id:cb.id});
   if(cb.data==="back"){await send(env,id,"What kind of connection would you like?",homeMenu());return json({ok:true});}
   if(cb.data==="about"){
