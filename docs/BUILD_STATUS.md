@@ -1,30 +1,30 @@
-# Build status — Emorva
+# Emorva development status
 
-Last reviewed: 2026-11-10. The code in this repository is a **foundation**, not a launched production matchmaking service.
+As of 2026-11-10.
 
 | Area | Status |
 |---|---|
-| Original mobile-responsive landing page / approved brand styling | Implemented (image assets being added) |
-| Nested pricing exploration and transparent proposed fees | Implemented |
-| Public API catalogue and health endpoint | Implemented |
-| Early access form + D1 endpoint | Implemented; disabled until D1 and secrets configured |
-| Telegram /start, nested menus and price previews | Implemented transport; requires bot setup |
-| D1 database schema for member and financial records | Drafted; not yet migrated |
-| Dojah adult and identity verification | NOT implemented |
-| Member authentication / profiles / media moderation | NOT implemented |
-| Verified matches, safe contact exchange / consent | NOT implemented |
-| Credit reservations / double-entry ledger / payment webhook | NOT implemented |
-| Production payment provider approval and Telegram Stars | NOT confirmed |
-| Creator marketplace / subscriptions / live streaming | NOT implemented |
-| Admin dashboard / role access / abuse reports | NOT implemented |
-| Deployment to Cloudflare | NOT configured |
-| Legal, privacy, policy and operations review | NOT complete |
+| React + TypeScript website source | Written, not build-verified |
+| Vite + Cloudflare Workers application configuration | Written, not deployed |
+| Velvet Romance styling | Included |
+| Generated Black/African adult website photographs | Generated separately, not yet committed to \`public/assets\` |
+| Interactive nested service catalogue | Implemented in React |
+| Telegram read-only catalogue bot | Handler implemented, needs BotFather setup and live validation |
+| Health and catalogue API | Implemented, not runtime-tested |
+| Early-access email endpoint | Disabled until binding and secrets configured |
+| D1 schema | Drafted, not applied |
+| Live member profiles and Telegram-linked authentication | Not implemented |
+| Adult-age assurance and Dojah integration | Not implemented |
+| Matching engine and consent state machine | Not implemented |
+| Credit ledger / paid introductions / webhook payments | Not implemented |
+| Protected private contact exchange | Not implemented |
+| Creator content and payouts | Not implemented |
+| Moderation and Founder admin dashboard | Not implemented |
+| Cloudflare deployment | Not configured |
+| Legal/privacy/payment-provider approval | Outstanding |
 
-## Architecture boundaries
-Website payments must fund independently delivered website services, subject to PSP approval. Telegram-native digital services require Telegram Stars unless Telegram confirms another arrangement. This repository never implements web-credit payments for Telegram-native paid features as a circumvention route.
+## Non-negotiable technical controls
+A website balance is not sufficient proof of payment. No contact exchange or availability-credit settlement before state-machine validation, durable idempotent ledger entries, age assurance and mutual consent. Avoid using third-party media as real member profiles.
 
-## Brand assets
-The accepted style uses deep plum / burgundy and rose pink with African adult photography. We must use actual generated site assets, not a poster screenshot. All marketing images are fictional illustrations and must not be presented as real member profiles.
-
-## Development workflow
-One repository, one \`main\` working branch. No GitHub Actions, no copying closed-source competitor implementations, no deployment claims without verification.
+## Build rules
+Use one GitHub \`main\` branch; no GitHub Actions; do not modify the \`rea\` fork or other production projects. Do not claim the site is live without checking a deployment.

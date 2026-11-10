@@ -2,22 +2,42 @@
 
 **Where chemistry begins.**
 
-Emorva is a web-first, adult-only private matchmaking and creator platform. This repository contains our **original implementation**, not copied competitor code.
+An original, web-first adults-only matchmaking and future creator ecosystem. The product is currently **in development**. It is not accepting paid introductions, creator purchases or private contact exchanges.
 
-## Development principles
-- Cloudflare Pages first, using its free-friendly `*.pages.dev` deployment and Pages Functions.
-- One working `main` branch; **no GitHub Actions**.
-- Website and Telegram bot share catalogue and account backend. Future Mini App uses the same service.
-- Consent before introductions and contact release; age assurance required. Optional enhanced Dojah identity checks.
-- Never imply payment guarantees intimacy, a meeting, or someone's consent.
-- No Telegram payment workaround: Stars for Telegram-native paid digital services; web payments for independently delivered web services, subject to processor approval.
-- No production payments or contact sharing until the full safeguards and payment approvals are verified.
+## Application stack
 
-## Current stage
-Initial website, category catalogue, cloud functions and bot transport are being established. This is a development build, **not a launched service**.
+- **Web:** React 19 + TypeScript + Vite, branded in the Velvet Romance identity.
+- **Server:** Cloudflare Workers in TypeScript (\`worker/index.ts\`).
+- **Data:** Cloudflare D1 schema in \`database/schema.sql\`, not yet migrated.
+- **Telegram:** Read-only nested category bot menus; actual matchmaking not yet enabled.
+- **Images:** Optimized African adult photographic assets intended for \`public/assets\`. Pending upload.
+- **No Vercel and no GitHub Actions.** One working branch: \`main\`.
 
-## Brand
-Emorva · Velvet Romance: plum/burgundy, rose pink, ivory · African adult photography · “Where chemistry begins.”
+## First local run
 
-## Deployment (after setup)
-Connect this repository to Cloudflare Pages as a static project with root directory `/` and no build command. Add Cloudflare Pages secrets and D1 bindings before enabling the private backend. See `docs/DEPLOY.md`.
+\`\`\`bash
+npm install
+npm run dev
+npm run build
+npm test
+\`\`\`
+
+To deploy, use Cloudflare Workers and follow [docs/DEPLOY_WORKERS.md](docs/DEPLOY_WORKERS.md). The Worker offers \`/api/catalog\`, \`/api/health\`, \`/api/early-access\` and \`/api/telegram/webhook\`. Waitlist collection is disabled unless configured with a D1 binding and secret.
+
+## Product principles
+
+- Age assurance is required for adult access, while enhanced Dojah identity verification is a separate trust tier.
+- Explicit mutual consent is required before introductions and contact sharing.
+- Free search credit allowance; commercial fees are **proposals**, not a live checkout.
+- The 24-hour "I'm Available" credit reserve returns automatically if no qualifying mutual introduction completes, once implemented.
+- Web and Telegram channels have separate payment compliance rules; Telegram-native digital services use Stars unless explicit authorization says otherwise.
+- No one can purchase another person's romantic or sexual consent.
+- No commercial sexual-service brokerage, no illicit data gathering, and no copied competitor code/assets.
+
+## Project documents
+
+- [Current status](docs/BUILD_STATUS.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Cloudflare setup](docs/DEPLOY_WORKERS.md)
+
+The reference fork [SMT-cmd/rea](https://github.com/SMT-cmd/rea) is an **independent research tool**, not the Emorva application's source code.

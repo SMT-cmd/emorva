@@ -1,8 +1,11 @@
 {
   "name": "emorva",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22.16"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -17,7 +20,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.68.0",
-    "@cloudflare/workers-types": "^4.20261101.0",
+    "@cloudflare/workers-types": "^5.20261109.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.1.0",
