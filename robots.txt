@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Prelaunch staging: update this on public release.
