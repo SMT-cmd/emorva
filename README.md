@@ -13,6 +13,10 @@ An original, web-first adults-only matchmaking and future creator ecosystem. The
 - **Images:** Four original African adult romantic photographs and the accepted Emorva ribbon mark are committed to `public/assets/`.
 - **No Vercel and no GitHub Actions.** One working branch: \`main\`.
 
+## Navigation
+
+The homepage is intentionally compact. Discover, How It Works, Trust & Safety, Creators, and About have dedicated routes. Early-access registration is at `/early-access` (old `/#join` links redirect there); live payment and matchmaking remain disabled.
+
 ## First local run
 
 \`\`\`bash
